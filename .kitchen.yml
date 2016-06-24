@@ -1,0 +1,18 @@
+---
+driver:
+  name: docker
+  binary: docker.io
+  use_sudo: false
+
+provisioner:
+  name: chef_zero
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list: 
+      - recipe[apache_php::default]
+      - recipe[apache_php::server]
+    attributes:  
