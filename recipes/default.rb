@@ -8,10 +8,9 @@
 #
 package 'nano'
 
-group node['apache_php']['group']
-
-user node['apache_php']['user'] do
-  group node['apache_php']['group']
-  system true
-  shell '/bin/bash'
+apt_update 'Update the apt cache daily' do 
+    frequency 86_400
+    action :periodic
 end
+
+include_recipe 'apache_php::server'
